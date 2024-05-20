@@ -26,7 +26,57 @@ export class AppUsuarioComponent implements OnInit {
   mostrarSegundo: boolean = false;
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
+  selectedFile: File | null = null;
 
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      this.actualizarImagenUsuario();
+    }
+  }
+  actualizarImagenUsuario() {
+    if (!this.selectedFile) {
+      this.toastr.error('No se ha seleccionado ninguna imagen', 'Error');
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append('imagen_usuario', this.selectedFile);
+  
+    // Obtener el token de sessionStorage
+    const token = sessionStorage.getItem('token');
+    console.log('token para actualizacion', token);
+  
+    // Configurar los encabezados
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  
+    this.http.put(`https://santa02.pythonanywhere.com/api/usuarios/actualizar/${this.dni}/`, formData, { headers }).subscribe(
+      (response: any) => {
+        console.log('Imagen de usuario actualizada exitosamente:', response);
+        this.toastr.success('Se actualizó correctamente la foto de perfil', 'Recarga la pagina');
+  
+        // Actualizar sessionStorage con la nueva URL de la imagen
+        let nuevaURLImagen = response.imagen_usuario;
+  
+        // Verificar si la URL recibida ya es completa
+        if (!nuevaURLImagen.startsWith('http')) {
+          // Agregar el dominio de la API a la URL
+          nuevaURLImagen = 'https://santa02.pythonanywhere.com' + nuevaURLImagen;
+        }
+        
+        sessionStorage.setItem('imagen_usuario', nuevaURLImagen);
+      },
+      (error) => {
+        console.error('Error al actualizar la imagen del usuario:', error);
+        this.toastr.error('Hubo un error al actualizar la foto de perfil', 'Error');
+      }
+    );
+  }
+  
+  
+  
   mostrarSegundoElemento() {
     this.mostrarSegundo = true;
   }
@@ -92,4 +142,5 @@ export class AppUsuarioComponent implements OnInit {
       }
     );
   }
+
 }

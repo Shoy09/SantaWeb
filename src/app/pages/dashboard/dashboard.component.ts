@@ -197,7 +197,7 @@ export class AppDashboardComponent implements OnInit{
   }
 
   fetchImportacionDetails() {
-    this.http.get<ImporteDetalle[]>('https://dioses121.pythonanywhere.com/api/importaciones/' + this.idcodigogeneral + '/').subscribe(
+    this.http.get<ImporteDetalle[]>('https://santa02.pythonanywhere.com/api/importaciones/' + this.idcodigogeneral + '/').subscribe(
       (data: ImporteDetalle[]) => {
         if (data && data.length > 0) {
           this.importaciones = data;

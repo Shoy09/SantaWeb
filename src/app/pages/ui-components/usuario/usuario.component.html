@@ -284,9 +284,10 @@ No olvides seguirme en:
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
                     <img [src]="getUserImage()" alt="Imagen de usuario" class="imagen-usuario">
-                    <button type="button" class="boton-avatar">
+                    <button type="button" class="boton-avatar" (click)="fileInput.click()">
                         <i class="far fa-image"></i>
                     </button>
+                    <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;">                    
                 </div>
             </div>
         </div>
