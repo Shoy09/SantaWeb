@@ -1,0 +1,55 @@
+// Estilo para el contenedor de la tabla
+div {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 40px; // Añadir margen superior para espacio de encabezados
+
+  // Estilo para la tabla
+  table.responsive-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    // Estilo para las celdas del encabezado
+    thead th {
+      background-color: #82bcfd;
+      color: #333;
+      font-weight: bold;
+      padding: 10px;
+      border-bottom: 2px solid #ddd;
+      text-align: left;
+      position: sticky;
+      top: 0; // Fijar los encabezados en la parte superior
+      z-index: 2; // Asegura que los encabezados se mantengan por encima del contenido de la tabla
+      height: 40px; // Ajusta la altura según sea necesario
+    }
+
+    // Estilo para las celdas del cuerpo de la tabla
+    tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    // Estilo para la fila de "No hay datos disponibles"
+    tbody tr td.text-center {
+      text-align: center;
+      font-style: italic;
+      color: #999;
+    }
+
+    // Estilo para hover en las filas
+    tbody tr:hover {
+      background-color: #0184ff1e;
+    }
+
+    // Asegura que el texto en las celdas no se desborde
+    td, th {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

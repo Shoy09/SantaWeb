@@ -1,0 +1,52 @@
+/* Estilos para el formulario */
+.formulario-container {
+    margin-top: 20px; // Ajusta este valor según sea necesario
+  
+    .formulario {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  
+      .form-group {
+        margin-bottom: 20px;
+  
+        label {
+          display: block;
+          font-weight: bold;
+        }
+  
+        .input-field,
+        .textarea-field {
+          width: 100%;
+          padding: 10px;
+          background-color: var(--color-background);
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          color: var(--color-dark);
+  
+          &.textarea-field {
+            resize: vertical; // Permite redimensionar verticalmente
+          }
+        }
+      }
+  
+      .submit-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+  }
+  

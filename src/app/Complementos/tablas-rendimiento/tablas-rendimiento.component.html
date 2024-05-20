@@ -1,0 +1,27 @@
+<div style="max-height: 300px; overflow-y: auto;">
+    <table class="responsive-table">
+      <thead>
+        <tr>
+          <th scope="col">Item</th>
+          <th scope="col">Id Actividad</th>
+          <th scope="col">Id Labor</th>
+          <th scope="col">Rendimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="listaDeDetallesConDescripciones && listaDeDetallesConDescripciones.length">
+          <tr *ngFor="let detalle of listaDeDetallesConDescripciones">
+            <ng-container *ngIf="detalle">
+              <td>{{ detalle.item }}</td>
+              <td>{{ detalle.idactividad }}</td>
+              <td>{{ detalle.idlabor }}</td>
+              <td>{{ detalle.cantidad }}</td>
+            </ng-container>
+          </tr>
+        </ng-container>
+        <tr *ngIf="!listaDeDetallesConDescripciones || listaDeDetallesConDescripciones.length === 0">
+          <td colspan="4" class="text-center">No hay datos disponibles</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
